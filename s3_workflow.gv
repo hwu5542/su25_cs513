@@ -1,0 +1,43 @@
+digraph Workflow {
+rankdir=LR
+fontname=Helvetica; fontsize=18; labelloc=t
+label=main
+subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
+subgraph cluster_workflow_box_inner { label=""; penwidth=0
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Helvetica]
+load_datasets
+clean_menu_dates
+clean_dish_dates
+clean_prices
+clean_places
+clean_occasions
+export_results
+edge[fontname=Helvetica]
+load_datasets -> clean_menu_dates [label=loaded_data]
+clean_menu_dates -> clean_dish_dates [label=date_cleaned_data]
+clean_dish_dates -> clean_prices [label=dish_date_cleaned_data]
+clean_prices -> clean_places [label=price_cleaned_data]
+clean_places -> clean_occasions [label=place_cleaned_data]
+clean_occasions -> export_results [label=occasion_cleaned_data]
+}}
+subgraph cluster_input_ports_group_outer { label=""; penwidth=0
+subgraph cluster_input_ports_group_inner { label=""; penwidth=0
+node[shape=circle style=filled fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+ROOT_FOLDER_input_port [label=""]
+OUTPUT_FOLDER_input_port [label=""]
+input_files_input_port [label=""]
+}}
+subgraph cluster_output_ports_group_outer { label=""; penwidth=0
+subgraph cluster_output_ports_group_inner { label=""; penwidth=0
+node[shape=circle style=filled fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+cleaned_files_output_port [label=""]
+analysis_results_output_port [label=""]
+}}
+edge[fontname=Helvetica]
+ROOT_FOLDER_input_port -> load_datasets [label=ROOT_FOLDER]
+input_files_input_port -> load_datasets [label=input_files]
+OUTPUT_FOLDER_input_port -> export_results [label=OUTPUT_FOLDER]
+edge[fontname=Helvetica]
+export_results -> cleaned_files_output_port [label=cleaned_files]
+export_results -> analysis_results_output_port [label=analysis_results]
+}
