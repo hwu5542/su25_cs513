@@ -3,6 +3,7 @@ NYPL-menus/
 NYPL-menus-cleaned/
 dish_profile.html
 menu_profile.html
+yesworkflow-*.jar
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
