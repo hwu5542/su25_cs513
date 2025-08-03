@@ -83,6 +83,7 @@ def main(ROOT_FOLDER="NYPL-menus", OUTPUT_FOLDER="NYPL-menus-cleaned"):
     # @END clean_menu_dates
 
     # @BEGIN clean_dish_dates
+    # @IN dataset @AS loaded_data
     # @IN dataset @AS date_cleaned_data
     # @OUT dataset @AS dish_date_cleaned_data
 
@@ -135,7 +136,7 @@ def main(ROOT_FOLDER="NYPL-menus", OUTPUT_FOLDER="NYPL-menus-cleaned"):
     # @END clean_dish_dates
 
     # @BEGIN clean_prices
-    # @IN dataset @AS dish_date_cleaned_data
+    # @IN dataset @AS loaded_data
     # @OUT dataset @AS price_cleaned_data
 
     # IC 10: Blank lowest_price and highest_price in Dish
@@ -176,7 +177,7 @@ def main(ROOT_FOLDER="NYPL-menus", OUTPUT_FOLDER="NYPL-menus-cleaned"):
     # @END clean_prices
 
     # @BEGIN clean_places
-    # @IN dataset @AS price_cleaned_data
+    # @IN dataset @AS loaded_data
     # @OUT dataset @AS place_cleaned_data
 
     # IC 11: Missing or Null Place Values in Menu
@@ -208,7 +209,8 @@ def main(ROOT_FOLDER="NYPL-menus", OUTPUT_FOLDER="NYPL-menus-cleaned"):
     # @END clean_places
 
     # @BEGIN clean_occasions
-    # @IN dataset @AS place_cleaned_data
+    # @IN dataset @AS loaded_data
+    # @IN dataset @AS date_cleaned_data
     # @OUT dataset @AS occasion_cleaned_data
 
     # IC 13-16: Clean occasions and events
@@ -235,6 +237,10 @@ def main(ROOT_FOLDER="NYPL-menus", OUTPUT_FOLDER="NYPL-menus-cleaned"):
     # @BEGIN export_results
     # @PARAM OUTPUT_FOLDER
     # @IN dataset @AS occasion_cleaned_data
+    # @IN dataset @AS place_cleaned_data
+    # @IN dataset @AS price_cleaned_data
+    # @IN dataset @As dish_date_cleaned_data
+    # @IN dataset @AS date_cleaned_data
     # @OUT cleaned_files @URI file:{OUTPUT_FOLDER}/*_fixed.csv
     # @OUT analysis_results @URI file:{OUTPUT_FOLDER}/Menu_fixed_clean_occasion.csv
     dataset[MENU].drop(columns=["date_prefix", "call_prefix"], inplace=True)

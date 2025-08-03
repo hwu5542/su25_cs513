@@ -1,0 +1,34 @@
+digraph Workflow {
+rankdir=LR
+fontname=Courier; fontsize=18; labelloc=t
+label=clean_prices
+subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
+subgraph cluster_workflow_box_inner { label=""; color=white
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
+calculate_dish_price_from_menu [shape=record rankdir=LR label="{{<f0> calculate_dish_price_from_menu |<f1> calculate dish highest lowest price from menus dish price information}}"];
+drop_missing_dish_prices [shape=record rankdir=LR label="{{<f0> drop_missing_dish_prices |<f1> drop those dishes with missing price and could not be calculated}}"];
+edge[fontname=Helvetica]
+calculate_dish_price_from_menu -> drop_missing_dish_prices [label=dish_lowest_price_caled]
+calculate_dish_price_from_menu -> drop_missing_dish_prices [label=dish_highest_price_caled]
+}}
+subgraph cluster_input_ports_group_outer { label=""; color=white
+subgraph cluster_input_ports_group_inner { label=""; color=white
+node[shape=circle style=filled fillcolor="#FFFFFF" peripheries=1 fontname=Courier width=0.2]
+dish_lowest_price_input_port [label=""]
+dish_highest_price_input_port [label=""]
+menu_dish_price_input_port [label=""]
+}}
+subgraph cluster_output_ports_group_outer { label=""; color=white
+subgraph cluster_output_ports_group_inner { label=""; color=white
+node[shape=circle style=filled fillcolor="#FFFFFF" peripheries=1 fontname=Courier width=0.2]
+dish_lowest_price_cleaned_output_port [label=""]
+dish_highest_price_cleaned_output_port [label=""]
+}}
+edge[fontname=Helvetica]
+dish_lowest_price_input_port -> calculate_dish_price_from_menu [label=dish_lowest_price]
+dish_highest_price_input_port -> calculate_dish_price_from_menu [label=dish_highest_price]
+menu_dish_price_input_port -> calculate_dish_price_from_menu [label=menu_dish_price]
+edge[fontname=Helvetica]
+drop_missing_dish_prices -> dish_lowest_price_cleaned_output_port [label=dish_lowest_price_cleaned]
+drop_missing_dish_prices -> dish_highest_price_cleaned_output_port [label=dish_highest_price_cleaned]
+}

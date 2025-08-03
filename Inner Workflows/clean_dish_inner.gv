@@ -1,0 +1,37 @@
+digraph Workflow {
+rankdir=LR
+fontname=Courier; fontsize=18; labelloc=t
+label=clean_dish_dates
+subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
+subgraph cluster_workflow_box_inner { label=""; color=white
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
+calculate_nan_from_menu [shape=record rankdir=LR label="{{<f0> calculate_nan_from_menu |<f1> caculate missing first_appear and last_appear from Menu dates}}"];
+removed_Temporal_inconsistencies [shape=record rankdir=LR label="{{<f0> removed_Temporal_inconsistencies |<f1> set those with first_appear later than last_appear to have last_appear floored to first_appear}}"];
+remove_dish_outside_range [shape=record rankdir=LR label="{{<f0> remove_dish_outside_range |<f1> Remove those dish outsite of 1880-2000 in Dish}}"];
+edge[fontname=Helvetica]
+calculate_nan_from_menu -> removed_Temporal_inconsistencies [label=dish_first_appear_caled]
+calculate_nan_from_menu -> removed_Temporal_inconsistencies [label=dish_last_appear_caled]
+removed_Temporal_inconsistencies -> remove_dish_outside_range [label=dish_first_appear_consistent]
+removed_Temporal_inconsistencies -> remove_dish_outside_range [label=dish_last_appear_consistent]
+}}
+subgraph cluster_input_ports_group_outer { label=""; color=white
+subgraph cluster_input_ports_group_inner { label=""; color=white
+node[shape=circle style=filled fillcolor="#FFFFFF" peripheries=1 fontname=Courier width=0.2]
+dish_first_appear_input_port [label=""]
+dish_last_appear_input_port [label=""]
+menu_date_cleaned_input_port [label=""]
+}}
+subgraph cluster_output_ports_group_outer { label=""; color=white
+subgraph cluster_output_ports_group_inner { label=""; color=white
+node[shape=circle style=filled fillcolor="#FFFFFF" peripheries=1 fontname=Courier width=0.2]
+dish_first_appear_cleaned_output_port [label=""]
+dish_last_appear_cleaned_output_port [label=""]
+}}
+edge[fontname=Helvetica]
+dish_first_appear_input_port -> calculate_nan_from_menu [label=dish_first_appear]
+dish_last_appear_input_port -> calculate_nan_from_menu [label=dish_last_appear]
+menu_date_cleaned_input_port -> calculate_nan_from_menu [label=menu_date_cleaned]
+edge[fontname=Helvetica]
+remove_dish_outside_range -> dish_first_appear_cleaned_output_port [label=dish_first_appear_cleaned]
+remove_dish_outside_range -> dish_last_appear_cleaned_output_port [label=dish_last_appear_cleaned]
+}

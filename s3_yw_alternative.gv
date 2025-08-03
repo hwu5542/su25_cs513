@@ -1,0 +1,76 @@
+
+/* Start of top-level graph */
+digraph Workflow {
+rankdir=TB
+
+/* Title for graph */
+fontname=Courier; fontsize=18; labelloc=t
+label=main
+
+/* Start of double cluster for drawing box around nodes in workflow */
+subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
+subgraph cluster_workflow_box_inner { label=""; color=white
+
+/* Style for nodes representing atomic programs in workflow */
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
+
+/* Nodes representing atomic programs in workflow */
+load_datasets
+clean_menu_dates
+clean_dish_dates
+clean_prices
+clean_places
+clean_occasions
+export_results
+
+/* Style for nodes representing non-parameter data channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes for non-parameter data channels in workflow */
+cleaned_files [shape=record rankdir=LR label="{<f0> cleaned_files |<f1> file\:\{OUTPUT_FOLDER\}/*_fixed.csv}"];
+analysis_results [shape=record rankdir=LR label="{<f0> analysis_results |<f1> file\:\{OUTPUT_FOLDER\}/Menu_fixed_clean_occasion.csv}"];
+input_files [shape=record rankdir=LR label="{<f0> input_files |<f1> file\:\{ROOT_FOLDER\}/*.csv}"];
+loaded_data
+date_cleaned_data
+occasion_cleaned_data
+place_cleaned_data
+price_cleaned_data
+dish_date_cleaned_data
+
+/* Style for nodes representing parameter channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing parameter channels in workflow */
+ROOT_FOLDER
+OUTPUT_FOLDER
+
+/* Edges representing connections between programs and channels */
+load_datasets -> loaded_data
+ROOT_FOLDER -> load_datasets
+input_files -> load_datasets
+clean_menu_dates -> date_cleaned_data
+loaded_data -> clean_menu_dates
+clean_dish_dates -> dish_date_cleaned_data
+loaded_data -> clean_dish_dates
+date_cleaned_data -> clean_dish_dates
+clean_prices -> price_cleaned_data
+loaded_data -> clean_prices
+clean_places -> place_cleaned_data
+loaded_data -> clean_places
+clean_occasions -> occasion_cleaned_data
+loaded_data -> clean_occasions
+date_cleaned_data -> clean_occasions
+export_results -> cleaned_files
+export_results -> analysis_results
+OUTPUT_FOLDER -> export_results
+occasion_cleaned_data -> export_results
+place_cleaned_data -> export_results
+price_cleaned_data -> export_results
+dish_date_cleaned_data -> export_results
+date_cleaned_data -> export_results
+
+/* End of double cluster for drawing box around nodes in workflow */
+}}
+
+/* End of top-level graph */
+}

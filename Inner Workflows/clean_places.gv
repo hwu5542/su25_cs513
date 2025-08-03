@@ -1,0 +1,27 @@
+digraph Workflow {
+rankdir=LR
+fontname=Courier; fontsize=18; labelloc=t
+label=clean_places
+subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
+subgraph cluster_workflow_box_inner { label=""; color=white
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
+fillna_places_with_unknown
+detailed_catagorization_places
+edge[fontname=Helvetica]
+fillna_places_with_unknown -> detailed_catagorization_places [label=menu_place_no_na]
+}}
+subgraph cluster_input_ports_group_outer { label=""; color=white
+subgraph cluster_input_ports_group_inner { label=""; color=white
+node[shape=circle style=filled fillcolor="#FFFFFF" peripheries=1 fontname=Courier width=0.2]
+menu_place_input_port [label=""]
+}}
+subgraph cluster_output_ports_group_outer { label=""; color=white
+subgraph cluster_output_ports_group_inner { label=""; color=white
+node[shape=circle style=filled fillcolor="#FFFFFF" peripheries=1 fontname=Courier width=0.2]
+menu_place_cleaned_output_port [label=""]
+}}
+edge[fontname=Helvetica]
+menu_place_input_port -> fillna_places_with_unknown [label=menu_place]
+edge[fontname=Helvetica]
+detailed_catagorization_places -> menu_place_cleaned_output_port [label=menu_place_cleaned]
+}
