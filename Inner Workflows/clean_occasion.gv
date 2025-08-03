@@ -1,0 +1,44 @@
+digraph Workflow {
+rankdir=LR
+fontname=Courier; fontsize=18; labelloc=t
+label=clean_occasions
+subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
+subgraph cluster_workflow_box_inner { label=""; color=white
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
+openrefine_basic_clean_cluster [shape=record rankdir=LR label="{{<f0> openrefine_basic_clean_cluster |<f1> Open Refine Operations in a sperate Workflow Diagram}}"];
+create_meal_type [shape=record rankdir=LR label="{{<f0> create_meal_type |<f1> Strip out meal_type such as DINNER/BREAKFAST/LUNCH from occasion and events}}"];
+Remove [shape=record rankdir=LR label="{{<f0> Remove |<f1> Remove those description like WINE LIST/ROOM SERVICE from occastion}}"];
+filter_out_nonspecial_events [shape=record rankdir=LR label="{{<f0> filter_out_nonspecial_events |<f1> Filter out non special event/occastions}}"];
+filter_out_nonholiday_weekdays_weekends_menus [shape=record rankdir=LR label="{{<f0> filter_out_nonholiday_weekdays_weekends_menus |<f1> Filter out non special event/occastions and weekend/weekday menu}}"];
+Merge_occasion_event_to_special_occasion [shape=record rankdir=LR label="{{<f0> Merge_occasion_event_to_special_occasion |<f1> Merge occasion_clean2 and event_clean2 into special_occasio}}"];
+edge[fontname=Helvetica]
+openrefine_basic_clean_cluster -> create_meal_type [label=occasion_ORclean]
+openrefine_basic_clean_cluster -> Remove [label=occasion_ORclean]
+openrefine_basic_clean_cluster -> create_meal_type [label=event_ORclean]
+openrefine_basic_clean_cluster -> Remove [label=event_ORclean]
+Remove -> filter_out_nonspecial_events [label=occasion_clean2]
+Remove -> filter_out_nonspecial_events [label=event_clean2]
+filter_out_nonspecial_events -> filter_out_nonholiday_weekdays_weekends_menus [label=occasion_filter1]
+filter_out_nonspecial_events -> filter_out_nonholiday_weekdays_weekends_menus [label=event_filter1]
+filter_out_nonholiday_weekdays_weekends_menus -> Merge_occasion_event_to_special_occasion [label=occasion_filter2]
+filter_out_nonholiday_weekdays_weekends_menus -> Merge_occasion_event_to_special_occasion [label=event_filter2]
+}}
+subgraph cluster_input_ports_group_outer { label=""; color=white
+subgraph cluster_input_ports_group_inner { label=""; color=white
+node[shape=circle style=filled fillcolor="#FFFFFF" peripheries=1 fontname=Courier width=0.2]
+occasion_input_port [label=""]
+event_input_port [label=""]
+}}
+subgraph cluster_output_ports_group_outer { label=""; color=white
+subgraph cluster_output_ports_group_inner { label=""; color=white
+node[shape=circle style=filled fillcolor="#FFFFFF" peripheries=1 fontname=Courier width=0.2]
+special_occasion_output_port [label=""]
+meal_type_output_port [label=""]
+}}
+edge[fontname=Helvetica]
+occasion_input_port -> openrefine_basic_clean_cluster [label=occasion]
+event_input_port -> openrefine_basic_clean_cluster [label=event]
+edge[fontname=Helvetica]
+Merge_occasion_event_to_special_occasion -> special_occasion_output_port [label=special_occasion]
+create_meal_type -> meal_type_output_port [label=meal_type]
+}

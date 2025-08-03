@@ -1,0 +1,227 @@
+#@begin Parallel_OR #@desc Parallel OpenRefine Workflow
+#@param expression:value.replace("MORNING","BREAKFAST")
+#@param expression:grel:value.replace("FRUHSTUCK","BREAKFAST").replace("MITTAGESSEN","LUNCH").replace("ABENDESSEN","DINNER").replace("DINER","DINNER").replace("DEJEUNER","BREAKFAST")
+#@param expression:grel:value.replace("SPEISEKARTE","MENU").replace("LUNCHEONETTE","LUNCHEON").replace("LUNCHEON","LUNCH")
+#@param expression:value.trim()
+#@param expression:value.toUppercase()
+#@param expression:grel:value.replace("NOON","LUNCH").replace("TEA","TIFFIN").replace("MIDDAY","LUNCH").replace("EVENING","DINNER")
+#@param expression:value
+#@param expression:value.replace("OTHER","")
+#@param expression:value.replace(/\\[|\\]|\\?|\\(|\\)|\\{|\\}|,/,"")
+#@param expression:value.replace("BRUNCH","BREAKFAST_LUNCH")
+#@param expression:value.replace("CARTE_DU_JOUR","MENU")
+#@param expression:value.replace(/;|&|\\\\|\\//,"_")
+#@param expression:value.replace("TABLE_D\\'HOTE","")
+#@param expression:value.replace("MIDDAG","DINNER")
+#@param expression:value.replace("BILL_OF_FARE","MENU")
+#@in event_7
+#@in occasion_8
+#@in occasion_10
+#@in event_5
+#@in occasion_11
+#@in occasion_2
+#@in event_9
+#@in occasion_9
+#@in occasion_5
+#@in event_12
+#@in event
+#@in event_1
+#@in event_10
+#@in occasion_12
+#@in event_15
+#@in occasion
+#@in occasion_1
+#@in occasion_6
+#@in event_19
+#@in event_8
+#@in event_16
+#@in event_2
+#@in occasion_7
+#@in event_17
+#@in event_14
+#@in event_18
+#@in occasion_3
+#@in event_6
+#@in event_3
+#@in event_4
+#@in occasion_4
+#@in event_13
+#@in event_11
+#@in event_20
+#@out CleanData
+#@begin core/text-transform0 #@desc Text transform on cells in column event using expression value.replace(/\\[|\\]|\\?|\\(|\\)|\\{|\\}|,/,\"\")
+#@param expression:value.replace(/\\[|\\]|\\?|\\(|\\)|\\{|\\}|,/,"")
+#@in event
+#@out event_1
+#@end core/text-transform0
+#@begin core/text-transform1 #@desc Text transform on cells in column event using expression value.replace(/;|&|\\\\|\\//,\" \")
+#@param expression:value.replace(/;|&|\\\\|\\//,"_")
+#@in event_1
+#@out event_2
+#@end core/text-transform1
+#@begin core/text-transform2 #@desc Text transform on cells in column occasion using expression value.replace(/\\[|\\]|\\?|\\(|\\)|\\{|\\}|,/,\"\")
+#@param expression:value.replace(/\\[|\\]|\\?|\\(|\\)|\\{|\\}|,/,"")
+#@in occasion
+#@out occasion_1
+#@end core/text-transform2
+#@begin core/text-transform3 #@desc Text transform on cells in column occasion using expression value.replace(/;|&|\\\\|\\//,\" \")
+#@param expression:value.replace(/;|&|\\\\|\\//,"_")
+#@in occasion_1
+#@out occasion_2
+#@end core/text-transform3
+#@begin core/text-transform4 #@desc Text transform on cells in column event using expression value.toUppercase()
+#@param expression:value.toUppercase()
+#@in event_2
+#@out event_3
+#@end core/text-transform4
+#@begin core/text-transform5 #@desc Text transform on cells in column occasion using expression value.toUppercase()
+#@param expression:value.toUppercase()
+#@in occasion_2
+#@out occasion_3
+#@end core/text-transform5
+#@begin core/text-transform6 #@desc Text transform on cells in column event using expression value.replace(\"OTHER\",\"\")
+#@param expression:value.replace("OTHER","")
+#@in event_3
+#@out event_4
+#@end core/text-transform6
+#@begin core/text-transform7 #@desc Text transform on cells in column occasion using expression value.replace(\"OTHER\",\"\")
+#@param expression:value.replace("OTHER","")
+#@in occasion_3
+#@out occasion_4
+#@end core/text-transform7
+#@begin core/text-transform8 #@desc Text transform on cells in column event using expression grel:value.replace(\"FRUHSTUCK\",\"BREAKFAST\").replace(\"MITTAGESSEN\",\"LUNCH\").replace(\"ABENDESSEN\",\"DINNER\").replace(\"DINER\",\"DINNER\").replace(\"DEJEUNER\",\"BREAKFAST\")
+#@param expression:grel:value.replace("FRUHSTUCK","BREAKFAST").replace("MITTAGESSEN","LUNCH").replace("ABENDESSEN","DINNER").replace("DINER","DINNER").replace("DEJEUNER","BREAKFAST")
+#@in event_4
+#@out event_5
+#@end core/text-transform8
+#@begin core/text-transform9 #@desc Text transform on cells in column occasion using expression grel:value.replace(\"FRUHSTUCK\",\"BREAKFAST\").replace(\"MITTAGESSEN\",\"LUNCH\").replace(\"ABENDESSEN\",\"DINNER\").replace(\"DINER\",\"DINNER\").replace(\"DEJEUNER\",\"BREAKFAST\")
+#@param expression:grel:value.replace("FRUHSTUCK","BREAKFAST").replace("MITTAGESSEN","LUNCH").replace("ABENDESSEN","DINNER").replace("DINER","DINNER").replace("DEJEUNER","BREAKFAST")
+#@in occasion_4
+#@out occasion_5
+#@end core/text-transform9
+#@begin core/text-transform10 #@desc Text transform on cells in column event using expression grel:value.replace(\"NOON\",\"LUNCH\").replace(\"TEA\",\"TIFFIN\").replace(\"MIDDAY\",\"LUNCH\").replace(\"EVENING\",\"DINNER\")
+#@param expression:grel:value.replace("NOON","LUNCH").replace("TEA","TIFFIN").replace("MIDDAY","LUNCH").replace("EVENING","DINNER")
+#@in event_5
+#@out event_6
+#@end core/text-transform10
+#@begin core/text-transform11 #@desc Text transform on cells in column occasion using expression grel:value.replace(\"NOON\",\"LUNCH\").replace(\"TEA\",\"TIFFIN\").replace(\"MIDDAY\",\"LUNCH\").replace(\"EVENING\",\"DINNER\")
+#@param expression:grel:value.replace("NOON","LUNCH").replace("TEA","TIFFIN").replace("MIDDAY","LUNCH").replace("EVENING","DINNER")
+#@in occasion_5
+#@out occasion_6
+#@end core/text-transform11
+#@begin core/text-transform12 #@desc Text transform on cells in column event using expression grel:value.replace(\"SPEISEKARTE\",\"MENU\").replace(\"LUNCHEONETTE\",\"LUNCHEON\").replace(\"LUNCHEON\",\"LUNCH\")
+#@param expression:grel:value.replace("SPEISEKARTE","MENU").replace("LUNCHEONETTE","LUNCHEON").replace("LUNCHEON","LUNCH")
+#@in event_6
+#@out event_7
+#@end core/text-transform12
+#@begin core/text-transform13 #@desc Text transform on cells in column occasion using expression grel:value.replace(\"SPEISEKARTE\",\"MENU\").replace(\"LUNCHEONETTE\",\"LUNCHEON\").replace(\"LUNCHEON\",\"LUNCH\")
+#@param expression:grel:value.replace("SPEISEKARTE","MENU").replace("LUNCHEONETTE","LUNCHEON").replace("LUNCHEON","LUNCH")
+#@in occasion_6
+#@out occasion_7
+#@end core/text-transform13
+#@begin core/text-transform14 #@desc Text transform on cells in column event using expression value.replace(\"BILL OF FARE\",\"MENU\")
+#@param expression:value.replace("BILL_OF_FARE","MENU")
+#@in event_7
+#@out event_8
+#@end core/text-transform14
+#@begin core/text-transform15 #@desc Text transform on cells in column occasion using expression value.replace(\"BILL OF FARE\",\"MENU\")
+#@param expression:value.replace("BILL_OF_FARE","MENU")
+#@in occasion_7
+#@out occasion_8
+#@end core/text-transform15
+#@begin core/text-transform16 #@desc Text transform on cells in column occasion using expression value.trim()
+#@param expression:value.trim()
+#@in occasion_8
+#@out occasion_9
+#@end core/text-transform16
+#@begin core/text-transform17 #@desc Text transform on cells in column event using expression value.trim()
+#@param expression:value.trim()
+#@in event_8
+#@out event_9
+#@end core/text-transform17
+#@begin core/mass-edit18 #@desc Mass edit cells in column occasion
+#@param expression:value
+#@in occasion_9
+#@out occasion_10
+#@end core/mass-edit18
+#@begin core/mass-edit19 #@desc Mass edit cells in column occasion
+#@param expression:value
+#@in occasion_10
+#@out occasion_11
+#@end core/mass-edit19
+#@begin core/mass-edit20 #@desc Mass edit cells in column occasion
+#@param expression:value
+#@in occasion_11
+#@out occasion_12
+#@end core/mass-edit20
+#@begin core/mass-edit21 #@desc Mass edit cells in column occasion
+#@param expression:value
+#@in occasion_12
+#@out occasion_13
+#@end core/mass-edit21
+#@begin core/mass-edit22 #@desc Mass edit cells in column event
+#@param expression:value
+#@in event_9
+#@out event_10
+#@end core/mass-edit22
+#@begin core/mass-edit23 #@desc Mass edit cells in column event
+#@param expression:value
+#@in event_10
+#@out event_11
+#@end core/mass-edit23
+#@begin core/text-transform24 #@desc Text transform on cells in column event using expression value.replace(\"CARTE DU JOUR\",\"MENU\")
+#@param expression:value.replace("CARTE_DU_JOUR","MENU")
+#@in event_11
+#@out event_12
+#@end core/text-transform24
+#@begin core/mass-edit25 #@desc Mass edit cells in column event
+#@param expression:value
+#@in event_12
+#@out event_13
+#@end core/mass-edit25
+#@begin core/mass-edit26 #@desc Mass edit cells in column event
+#@param expression:value
+#@in event_13
+#@out event_14
+#@end core/mass-edit26
+#@begin core/mass-edit27 #@desc Mass edit cells in column event
+#@param expression:value
+#@in event_14
+#@out event_15
+#@end core/mass-edit27
+#@begin core/text-transform28 #@desc Text transform on cells in column event using expression value.replace(\"TABLE D\\'HOTE\",\"\")
+#@param expression:value.replace("TABLE_D\\'HOTE","")
+#@in event_15
+#@out event_16
+#@end core/text-transform28
+#@begin core/text-transform29 #@desc Text transform on cells in column event using expression value.replace(\"MORNING\",\"BREAKFAST\")
+#@param expression:value.replace("MORNING","BREAKFAST")
+#@in event_16
+#@out event_17
+#@end core/text-transform29
+#@begin core/text-transform30 #@desc Text transform on cells in column event using expression value.replace(\"BRUNCH\",\"BREAKFAST LUNCH\")
+#@param expression:value.replace("BRUNCH","BREAKFAST_LUNCH")
+#@in event_17
+#@out event_18
+#@end core/text-transform30
+#@begin core/text-transform31 #@desc Text transform on cells in column event using expression value.replace(\"MIDDAG\",\"DINNER\")
+#@param expression:value.replace("MIDDAG","DINNER")
+#@in event_18
+#@out event_19
+#@end core/text-transform31
+#@begin core/mass-edit32 #@desc Mass edit cells in column event
+#@param expression:value
+#@in event_19
+#@out event_20
+#@end core/mass-edit32
+#@begin core/mass-edit33 #@desc Mass edit cells in column event
+#@param expression:value
+#@in event_20
+#@out event_21
+#@end core/mass-edit33
+#@begin CombineDataCleaningChanges
+#@in event_21
+#@in occasion_13
+#@out CleanData
+#@end CombineDataCleaningChanges
+#@end Parallel_OR

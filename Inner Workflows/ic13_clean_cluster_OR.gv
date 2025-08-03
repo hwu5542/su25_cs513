@@ -1,0 +1,227 @@
+
+/* Start of top-level graph */
+digraph Workflow {
+rankdir=TB
+
+/* Title for graph */
+fontname=Helvetica; fontsize=18; labelloc=t
+label=Parallel_OR
+
+/* Start of double cluster for drawing box around nodes in workflow */
+subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
+subgraph cluster_workflow_box_inner { label=""; penwidth=0
+
+/* Style for nodes representing atomic programs in workflow */
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing atomic programs in workflow */
+"core/text-transform0" [shape=record rankdir=LR label="{<f0> core/text-transform0 |<f1> Text transform on cells in column event using expression value.replace(/\\[|\\]|\\?|\\(|\\)|\\\{|\\\}|,/,\"\")}"];
+"core/text-transform1" [shape=record rankdir=LR label="{<f0> core/text-transform1 |<f1> Text transform on cells in column event using expression value.replace(/;|&|\\\\|\\//,\" \")}"];
+"core/text-transform2" [shape=record rankdir=LR label="{<f0> core/text-transform2 |<f1> Text transform on cells in column occasion using expression value.replace(/\\[|\\]|\\?|\\(|\\)|\\\{|\\\}|,/,\"\")}"];
+"core/text-transform3" [shape=record rankdir=LR label="{<f0> core/text-transform3 |<f1> Text transform on cells in column occasion using expression value.replace(/;|&|\\\\|\\//,\" \")}"];
+"core/text-transform4" [shape=record rankdir=LR label="{<f0> core/text-transform4 |<f1> Text transform on cells in column event using expression value.toUppercase()}"];
+"core/text-transform5" [shape=record rankdir=LR label="{<f0> core/text-transform5 |<f1> Text transform on cells in column occasion using expression value.toUppercase()}"];
+"core/text-transform6" [shape=record rankdir=LR label="{<f0> core/text-transform6 |<f1> Text transform on cells in column event using expression value.replace(\"OTHER\",\"\")}"];
+"core/text-transform7" [shape=record rankdir=LR label="{<f0> core/text-transform7 |<f1> Text transform on cells in column occasion using expression value.replace(\"OTHER\",\"\")}"];
+"core/text-transform8" [shape=record rankdir=LR label="{<f0> core/text-transform8 |<f1> Text transform on cells in column event using expression grel\:value.replace(\"FRUHSTUCK\",\"BREAKFAST\").replace(\"MITTAGESSEN\",\"LUNCH\").replace(\"ABENDESSEN\",\"DINNER\").replace(\"DINER\",\"DINNER\").replace(\"DEJEUNER\",\"BREAKFAST\")}"];
+"core/text-transform9" [shape=record rankdir=LR label="{<f0> core/text-transform9 |<f1> Text transform on cells in column occasion using expression grel\:value.replace(\"FRUHSTUCK\",\"BREAKFAST\").replace(\"MITTAGESSEN\",\"LUNCH\").replace(\"ABENDESSEN\",\"DINNER\").replace(\"DINER\",\"DINNER\").replace(\"DEJEUNER\",\"BREAKFAST\")}"];
+"core/text-transform10" [shape=record rankdir=LR label="{<f0> core/text-transform10 |<f1> Text transform on cells in column event using expression grel\:value.replace(\"NOON\",\"LUNCH\").replace(\"TEA\",\"TIFFIN\").replace(\"MIDDAY\",\"LUNCH\").replace(\"EVENING\",\"DINNER\")}"];
+"core/text-transform11" [shape=record rankdir=LR label="{<f0> core/text-transform11 |<f1> Text transform on cells in column occasion using expression grel\:value.replace(\"NOON\",\"LUNCH\").replace(\"TEA\",\"TIFFIN\").replace(\"MIDDAY\",\"LUNCH\").replace(\"EVENING\",\"DINNER\")}"];
+"core/text-transform12" [shape=record rankdir=LR label="{<f0> core/text-transform12 |<f1> Text transform on cells in column event using expression grel\:value.replace(\"SPEISEKARTE\",\"MENU\").replace(\"LUNCHEONETTE\",\"LUNCHEON\").replace(\"LUNCHEON\",\"LUNCH\")}"];
+"core/text-transform13" [shape=record rankdir=LR label="{<f0> core/text-transform13 |<f1> Text transform on cells in column occasion using expression grel\:value.replace(\"SPEISEKARTE\",\"MENU\").replace(\"LUNCHEONETTE\",\"LUNCHEON\").replace(\"LUNCHEON\",\"LUNCH\")}"];
+"core/text-transform14" [shape=record rankdir=LR label="{<f0> core/text-transform14 |<f1> Text transform on cells in column event using expression value.replace(\"BILL OF FARE\",\"MENU\")}"];
+"core/text-transform15" [shape=record rankdir=LR label="{<f0> core/text-transform15 |<f1> Text transform on cells in column occasion using expression value.replace(\"BILL OF FARE\",\"MENU\")}"];
+"core/text-transform16" [shape=record rankdir=LR label="{<f0> core/text-transform16 |<f1> Text transform on cells in column occasion using expression value.trim()}"];
+"core/text-transform17" [shape=record rankdir=LR label="{<f0> core/text-transform17 |<f1> Text transform on cells in column event using expression value.trim()}"];
+"core/mass-edit18" [shape=record rankdir=LR label="{<f0> core/mass-edit18 |<f1> Mass edit cells in column occasion}"];
+"core/mass-edit19" [shape=record rankdir=LR label="{<f0> core/mass-edit19 |<f1> Mass edit cells in column occasion}"];
+"core/mass-edit20" [shape=record rankdir=LR label="{<f0> core/mass-edit20 |<f1> Mass edit cells in column occasion}"];
+"core/mass-edit21" [shape=record rankdir=LR label="{<f0> core/mass-edit21 |<f1> Mass edit cells in column occasion}"];
+"core/mass-edit22" [shape=record rankdir=LR label="{<f0> core/mass-edit22 |<f1> Mass edit cells in column event}"];
+"core/mass-edit23" [shape=record rankdir=LR label="{<f0> core/mass-edit23 |<f1> Mass edit cells in column event}"];
+"core/text-transform24" [shape=record rankdir=LR label="{<f0> core/text-transform24 |<f1> Text transform on cells in column event using expression value.replace(\"CARTE DU JOUR\",\"MENU\")}"];
+"core/mass-edit25" [shape=record rankdir=LR label="{<f0> core/mass-edit25 |<f1> Mass edit cells in column event}"];
+"core/mass-edit26" [shape=record rankdir=LR label="{<f0> core/mass-edit26 |<f1> Mass edit cells in column event}"];
+"core/mass-edit27" [shape=record rankdir=LR label="{<f0> core/mass-edit27 |<f1> Mass edit cells in column event}"];
+"core/text-transform28" [shape=record rankdir=LR label="{<f0> core/text-transform28 |<f1> Text transform on cells in column event using expression value.replace(\"TABLE D\\'HOTE\",\"\")}"];
+"core/text-transform29" [shape=record rankdir=LR label="{<f0> core/text-transform29 |<f1> Text transform on cells in column event using expression value.replace(\"MORNING\",\"BREAKFAST\")}"];
+"core/text-transform30" [shape=record rankdir=LR label="{<f0> core/text-transform30 |<f1> Text transform on cells in column event using expression value.replace(\"BRUNCH\",\"BREAKFAST LUNCH\")}"];
+"core/text-transform31" [shape=record rankdir=LR label="{<f0> core/text-transform31 |<f1> Text transform on cells in column event using expression value.replace(\"MIDDAG\",\"DINNER\")}"];
+"core/mass-edit32" [shape=record rankdir=LR label="{<f0> core/mass-edit32 |<f1> Mass edit cells in column event}"];
+"core/mass-edit33" [shape=record rankdir=LR label="{<f0> core/mass-edit33 |<f1> Mass edit cells in column event}"];
+CombineDataCleaningChanges
+
+/* Style for nodes representing non-parameter data channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes for non-parameter data channels in workflow */
+CleanData
+event
+event_1
+occasion
+occasion_1
+event_2
+occasion_2
+event_3
+occasion_3
+event_4
+occasion_4
+event_5
+occasion_5
+event_6
+occasion_6
+event_7
+occasion_7
+occasion_8
+event_8
+occasion_9
+occasion_10
+occasion_11
+occasion_12
+event_9
+event_10
+event_11
+event_12
+event_13
+event_14
+event_15
+event_16
+event_17
+event_18
+event_19
+event_20
+event_21
+occasion_13
+
+/* Style for nodes representing parameter channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing parameter channels in workflow */
+"expression:value.replace(/\\[|\\]|\\?|\\(|\\)|\\{|\\}|,/,\"\")"
+"expression:value.replace(/;|&|\\\\|\\//,\"_\")"
+"expression:value.toUppercase()"
+"expression:value.replace(\"OTHER\",\"\")"
+"expression:grel:value.replace(\"FRUHSTUCK\",\"BREAKFAST\").replace(\"MITTAGESSEN\",\"LUNCH\").replace(\"ABENDESSEN\",\"DINNER\").replace(\"DINER\",\"DINNER\").replace(\"DEJEUNER\",\"BREAKFAST\")"
+"expression:grel:value.replace(\"NOON\",\"LUNCH\").replace(\"TEA\",\"TIFFIN\").replace(\"MIDDAY\",\"LUNCH\").replace(\"EVENING\",\"DINNER\")"
+"expression:grel:value.replace(\"SPEISEKARTE\",\"MENU\").replace(\"LUNCHEONETTE\",\"LUNCHEON\").replace(\"LUNCHEON\",\"LUNCH\")"
+"expression:value.replace(\"BILL_OF_FARE\",\"MENU\")"
+"expression:value.trim()"
+"expression:value"
+"expression:value.replace(\"CARTE_DU_JOUR\",\"MENU\")"
+"expression:value.replace(\"TABLE_D\\'HOTE\",\"\")"
+"expression:value.replace(\"MORNING\",\"BREAKFAST\")"
+"expression:value.replace(\"BRUNCH\",\"BREAKFAST_LUNCH\")"
+"expression:value.replace(\"MIDDAG\",\"DINNER\")"
+
+/* Edges representing connections between programs and channels */
+"core/text-transform0" -> event_1
+"expression:value.replace(/\\[|\\]|\\?|\\(|\\)|\\{|\\}|,/,\"\")" -> "core/text-transform0"
+event -> "core/text-transform0"
+"core/text-transform1" -> event_2
+"expression:value.replace(/;|&|\\\\|\\//,\"_\")" -> "core/text-transform1"
+event_1 -> "core/text-transform1"
+"core/text-transform2" -> occasion_1
+"expression:value.replace(/\\[|\\]|\\?|\\(|\\)|\\{|\\}|,/,\"\")" -> "core/text-transform2"
+occasion -> "core/text-transform2"
+"core/text-transform3" -> occasion_2
+"expression:value.replace(/;|&|\\\\|\\//,\"_\")" -> "core/text-transform3"
+occasion_1 -> "core/text-transform3"
+"core/text-transform4" -> event_3
+"expression:value.toUppercase()" -> "core/text-transform4"
+event_2 -> "core/text-transform4"
+"core/text-transform5" -> occasion_3
+"expression:value.toUppercase()" -> "core/text-transform5"
+occasion_2 -> "core/text-transform5"
+"core/text-transform6" -> event_4
+"expression:value.replace(\"OTHER\",\"\")" -> "core/text-transform6"
+event_3 -> "core/text-transform6"
+"core/text-transform7" -> occasion_4
+"expression:value.replace(\"OTHER\",\"\")" -> "core/text-transform7"
+occasion_3 -> "core/text-transform7"
+"core/text-transform8" -> event_5
+"expression:grel:value.replace(\"FRUHSTUCK\",\"BREAKFAST\").replace(\"MITTAGESSEN\",\"LUNCH\").replace(\"ABENDESSEN\",\"DINNER\").replace(\"DINER\",\"DINNER\").replace(\"DEJEUNER\",\"BREAKFAST\")" -> "core/text-transform8"
+event_4 -> "core/text-transform8"
+"core/text-transform9" -> occasion_5
+"expression:grel:value.replace(\"FRUHSTUCK\",\"BREAKFAST\").replace(\"MITTAGESSEN\",\"LUNCH\").replace(\"ABENDESSEN\",\"DINNER\").replace(\"DINER\",\"DINNER\").replace(\"DEJEUNER\",\"BREAKFAST\")" -> "core/text-transform9"
+occasion_4 -> "core/text-transform9"
+"core/text-transform10" -> event_6
+"expression:grel:value.replace(\"NOON\",\"LUNCH\").replace(\"TEA\",\"TIFFIN\").replace(\"MIDDAY\",\"LUNCH\").replace(\"EVENING\",\"DINNER\")" -> "core/text-transform10"
+event_5 -> "core/text-transform10"
+"core/text-transform11" -> occasion_6
+"expression:grel:value.replace(\"NOON\",\"LUNCH\").replace(\"TEA\",\"TIFFIN\").replace(\"MIDDAY\",\"LUNCH\").replace(\"EVENING\",\"DINNER\")" -> "core/text-transform11"
+occasion_5 -> "core/text-transform11"
+"core/text-transform12" -> event_7
+"expression:grel:value.replace(\"SPEISEKARTE\",\"MENU\").replace(\"LUNCHEONETTE\",\"LUNCHEON\").replace(\"LUNCHEON\",\"LUNCH\")" -> "core/text-transform12"
+event_6 -> "core/text-transform12"
+"core/text-transform13" -> occasion_7
+"expression:grel:value.replace(\"SPEISEKARTE\",\"MENU\").replace(\"LUNCHEONETTE\",\"LUNCHEON\").replace(\"LUNCHEON\",\"LUNCH\")" -> "core/text-transform13"
+occasion_6 -> "core/text-transform13"
+"core/text-transform14" -> event_8
+"expression:value.replace(\"BILL_OF_FARE\",\"MENU\")" -> "core/text-transform14"
+event_7 -> "core/text-transform14"
+"core/text-transform15" -> occasion_8
+"expression:value.replace(\"BILL_OF_FARE\",\"MENU\")" -> "core/text-transform15"
+occasion_7 -> "core/text-transform15"
+"core/text-transform16" -> occasion_9
+"expression:value.trim()" -> "core/text-transform16"
+occasion_8 -> "core/text-transform16"
+"core/text-transform17" -> event_9
+"expression:value.trim()" -> "core/text-transform17"
+event_8 -> "core/text-transform17"
+"core/mass-edit18" -> occasion_10
+"expression:value" -> "core/mass-edit18"
+occasion_9 -> "core/mass-edit18"
+"core/mass-edit19" -> occasion_11
+"expression:value" -> "core/mass-edit19"
+occasion_10 -> "core/mass-edit19"
+"core/mass-edit20" -> occasion_12
+"expression:value" -> "core/mass-edit20"
+occasion_11 -> "core/mass-edit20"
+"core/mass-edit21" -> occasion_13
+"expression:value" -> "core/mass-edit21"
+occasion_12 -> "core/mass-edit21"
+"core/mass-edit22" -> event_10
+"expression:value" -> "core/mass-edit22"
+event_9 -> "core/mass-edit22"
+"core/mass-edit23" -> event_11
+"expression:value" -> "core/mass-edit23"
+event_10 -> "core/mass-edit23"
+"core/text-transform24" -> event_12
+"expression:value.replace(\"CARTE_DU_JOUR\",\"MENU\")" -> "core/text-transform24"
+event_11 -> "core/text-transform24"
+"core/mass-edit25" -> event_13
+"expression:value" -> "core/mass-edit25"
+event_12 -> "core/mass-edit25"
+"core/mass-edit26" -> event_14
+"expression:value" -> "core/mass-edit26"
+event_13 -> "core/mass-edit26"
+"core/mass-edit27" -> event_15
+"expression:value" -> "core/mass-edit27"
+event_14 -> "core/mass-edit27"
+"core/text-transform28" -> event_16
+"expression:value.replace(\"TABLE_D\\'HOTE\",\"\")" -> "core/text-transform28"
+event_15 -> "core/text-transform28"
+"core/text-transform29" -> event_17
+"expression:value.replace(\"MORNING\",\"BREAKFAST\")" -> "core/text-transform29"
+event_16 -> "core/text-transform29"
+"core/text-transform30" -> event_18
+"expression:value.replace(\"BRUNCH\",\"BREAKFAST_LUNCH\")" -> "core/text-transform30"
+event_17 -> "core/text-transform30"
+"core/text-transform31" -> event_19
+"expression:value.replace(\"MIDDAG\",\"DINNER\")" -> "core/text-transform31"
+event_18 -> "core/text-transform31"
+"core/mass-edit32" -> event_20
+"expression:value" -> "core/mass-edit32"
+event_19 -> "core/mass-edit32"
+"core/mass-edit33" -> event_21
+"expression:value" -> "core/mass-edit33"
+event_20 -> "core/mass-edit33"
+CombineDataCleaningChanges -> CleanData
+event_21 -> CombineDataCleaningChanges
+occasion_13 -> CombineDataCleaningChanges
+
+/* End of double cluster for drawing box around nodes in workflow */
+}}
+
+/* End of top-level graph */
+}
